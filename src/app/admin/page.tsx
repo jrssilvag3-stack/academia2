@@ -29,7 +29,7 @@ export default function AdminLogin() {
       } else {
         router.push("/admin/dashboard");
       }
-    } catch (err) {
+    } catch {
       setError("Ocorreu um erro inesperado.");
     } finally {
       setLoading(false);

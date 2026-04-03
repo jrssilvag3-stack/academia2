@@ -2,7 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
-import { MapPin, Phone, Mail, Camera, Play, Globe } from "lucide-react";
+import { MapPin, Phone, Mail } from "lucide-react";
 
 // SVGs customizados para redes sociais (independente de versão da biblioteca)
 const Instagram = ({ size }: { size: number | string }) => (

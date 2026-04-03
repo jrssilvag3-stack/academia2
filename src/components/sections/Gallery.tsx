@@ -36,10 +36,12 @@ export function Gallery() {
               transition={{ delay: i * 0.1 }}
               className="group relative h-[400px] overflow-hidden rounded-2xl cursor-pointer"
             >
-              <img 
+              <Image 
                 src={img.src} 
                 alt={img.title}
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0"
+                fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                className="object-cover transition-transform duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-60 group-hover:opacity-80 transition-opacity" />
               <div className="absolute bottom-6 left-6">

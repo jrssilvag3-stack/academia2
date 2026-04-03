@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 import { ArrowRight, Play } from "lucide-react";
 import Link from "next/link";
 
@@ -20,10 +21,12 @@ export function Hero() {
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
       {/* Dynamic Background */}
       <div className="absolute inset-0 z-0">
-        <img 
+        <Image 
           src="/assets/gym/hero.png" 
           alt="SWELL Academia Guaratuba Interior" 
-          className="absolute inset-0 w-full h-full object-cover opacity-40"
+          fill
+          priority
+          className="object-cover opacity-40"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/80 to-background z-10" />
         <div className="absolute inset-0 bg-grid opacity-20 z-11" />
@@ -89,9 +92,7 @@ export function Hero() {
               className="flex flex-col items-center justify-center space-y-12"
             >
               <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-12 -my-20 md:-my-32">
-                <motion.img 
-                  src="/logo2.png" 
-                  alt="SWELL Logo" 
+                <motion.div
                   initial={{ 
                     opacity: 0,
                     scale: 0.8
@@ -114,9 +115,17 @@ export function Hero() {
                     opacity: { duration: 1.5 },
                     scale: { duration: 1.5 }
                   }}
-                  className="h-80 md:h-[576px] w-auto object-contain"
-                  style={{ clipPath: 'inset(15% 0 15% 0)' }}
-                />
+                  className="relative h-80 md:h-[576px] w-[500px] md:w-[800px]"
+                >
+                  <Image 
+                    src="/logo2.png" 
+                    alt="SWELL Logo" 
+                    fill
+                    className="object-contain"
+                    style={{ clipPath: 'inset(15% 0 15% 0)' }}
+                    priority
+                  />
+                </motion.div>
               </div>
 
               <motion.p 

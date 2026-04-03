@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { MobileMenu } from "./MobileMenu";
 import { MenuButton } from "../MenuButton";
 import { cn } from "@/lib/utils";
@@ -32,15 +33,20 @@ export function Navbar() {
             className="flex items-center gap-4 group"
           >
             <div className="flex items-center gap-3 md:gap-4 py-0.5">
-              <img 
+              <Image 
                 src="/logo2.png" 
                 alt="SWELL Logo" 
+                width={300}
+                height={150}
                 className="h-[108px] md:h-[144px] w-auto object-contain drop-shadow-[0_0_8px_rgba(0,243,255,0.3)] translate-y-[8px] md:translate-y-[12px]"
                 style={{ clipPath: 'inset(30% 0 40% 0)' }}
+                priority
               />
-              <img 
+              <Image 
                 src="/guaratuba_transparent.png" 
                 alt="Guaratuba" 
+                width={200}
+                height={50}
                 className="h-[23px] md:h-[34px] w-auto object-contain hidden sm:block translate-y-[5px]"
               />
             </div>
