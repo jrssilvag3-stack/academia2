@@ -4,10 +4,10 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 
 const images = [
-  { title: "Área de Musculação", src: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=800" },
-  { title: "Zona de Performance", src: "https://images.unsplash.com/photo-1540497077202-7c8a3999166f?q=80&w=800" },
-  { title: "Cross Training", src: "https://images.unsplash.com/photo-1534367610445-39497eef8193?q=80&w=800" },
-  { title: "Recovery Area", src: "https://images.unsplash.com/photo-1593079831268-3381b0db4a77?q=80&w=800" },
+  { title: "Área de Musculação", src: "/assets/gym/weights.png" },
+  { title: "Zona de Performance", src: "/assets/gym/performance.png" },
+  { title: "Cross Training", src: "/assets/gym/cross.png" },
+  { title: "Recovery Area", src: "/assets/gym/recovery.png" },
 ];
 
 export function Gallery() {
