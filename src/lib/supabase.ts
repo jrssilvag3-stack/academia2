@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 // Mock do Supabase para versão preview (sem banco de dados)
 const mockResponse = { data: [], error: null, count: 0 };
 const mockSingleResponse = { data: null, error: null };
