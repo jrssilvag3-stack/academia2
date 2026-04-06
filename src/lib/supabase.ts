@@ -1,13 +1,56 @@
-import { createClient } from "@supabase/supabase-js";
-import { Database } from "@/types/database";
+// Mock do Supabase para versão preview (sem banco de dados)
+const mockResponse = { data: [], error: null, count: 0 };
+const mockSingleResponse = { data: null, error: null };
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || "https://placeholder.supabase.co";
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || "placeholder";
+const chainableMock = {
+  select: () => chainableMock,
+  insert: () => chainableMock,
+  update: () => chainableMock,
+  upsert: () => chainableMock,
+  delete: () => chainableMock,
+  eq: () => chainableMock,
+  neq: () => chainableMock,
+  gt: () => chainableMock,
+  lt: () => chainableMock,
+  gte: () => chainableMock,
+  lte: () => chainableMock,
+  like: () => chainableMock,
+  ilike: () => chainableMock,
+  is: () => chainableMock,
+  in: () => chainableMock,
+  contains: () => chainableMock,
+  containedBy: () => chainableMock,
+  range: () => chainableMock,
+  abortSignal: () => chainableMock,
+  single: async () => mockSingleResponse,
+  maybeSingle: async () => mockSingleResponse,
+  order: () => chainableMock,
+  limit: () => chainableMock,
+  rangeAdj: () => chainableMock,
+  then: (resolve: any) => resolve(mockResponse),
+};
 
-if (!process.env.NEXT_PUBLIC_SUPABASE_URL || !process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY) {
-  if (process.env.NODE_ENV === "production" && typeof window !== "undefined") {
-    console.error("Supabase environment variables are missing!");
-  }
-}
+export const supabase = {
+  auth: {
+    getSession: async () => ({ 
+      data: { session: { user: { email: "admin@swell.com" } } }, 
+      error: null 
+    }),
+    signInWithPassword: async () => ({ 
+      data: { user: { email: "admin@swell.com" }, session: {} }, 
+      error: null 
+    }),
+    signOut: async () => ({ error: null }),
+    onAuthStateChange: () => ({ 
+      data: { subscription: { unsubscribe: () => {} } } 
+    }),
+    getUser: async () => ({ data: { user: { email: "admin@swell.com" } }, error: null }),
+  },
+  from: () => chainableMock,
+  storage: {
+    from: () => ({
+      getPublicUrl: () => ({ data: { publicUrl: "" } }),
+    }),
+  },
+} as any; // eslint-disable-line @typescript-eslint/no-explicit-any
 
-export const supabase = createClient<Database>(supabaseUrl, supabaseAnonKey);

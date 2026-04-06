@@ -3,7 +3,6 @@
 export const dynamic = "force-dynamic";
 
 import { useState } from "react";
-import { supabase } from "@/lib/supabase";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { Lock, Mail, Loader2, Dumbbell } from "lucide-react";
@@ -21,15 +20,11 @@ export default function AdminLogin() {
     setError(null);
 
     try {
-      const { error } = await supabase.auth.signInWithPassword({
-        email,
-        password,
-      });
-
-      if (error) {
-        setError("Credenciais inválidas. Verifique seu email e senha.");
-      } else {
+      // Login mockado para versão preview
+      if (email === "admin@swell.com" && password === "admin123") {
         router.push("/admin/dashboard");
+      } else {
+        setError("Credenciais de demonstração: use admin@swell.com / admin123");
       }
     } catch {
       setError("Ocorreu um erro inesperado.");
@@ -67,7 +62,7 @@ export default function AdminLogin() {
                 onChange={(e) => setEmail(e.target.value)}
                 required
                 className="w-full bg-white/5 border border-white/10 rounded-xl py-4 pl-12 pr-4 text-white focus:outline-none focus:border-primary/50 transition-all outline-none"
-                placeholder="admin@swell.com"
+                 placeholder="admin@swell.com (demo)"
               />
             </div>
           </div>
@@ -82,7 +77,7 @@ export default function AdminLogin() {
                 onChange={(e) => setPassword(e.target.value)}
                 required
                 className="w-full bg-white/5 border border-white/10 rounded-xl py-4 pl-12 pr-4 text-white focus:outline-none focus:border-primary/50 transition-all outline-none"
-                placeholder="••••••••"
+                 placeholder="admin123 (demo)"
               />
             </div>
           </div>

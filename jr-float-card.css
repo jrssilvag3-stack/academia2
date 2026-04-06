@@ -1,0 +1,144 @@
+/* J. RAPHAEL - FLOATING CONVERSION CARD */
+:root {
+    --jr-bg: rgba(10, 10, 10, 0.85);
+    --jr-border: rgba(255, 255, 255, 0.12);
+    --jr-accent: #ffffff;
+    --jr-text: #f0f0f0;
+    --jr-muted: #888;
+}
+
+#jr-float-container {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 99999;
+    font-family: 'Inter Tight', 'Inter', -apple-system, sans-serif;
+    width: 320px;
+    pointer-events: none;
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+#jr-float-container.active {
+    pointer-events: auto;
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+.jr-card {
+    background: var(--jr-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--jr-border);
+    border-radius: 20px;
+    padding: 24px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    overflow: hidden;
+    position: relative;
+}
+
+.jr-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+}
+
+.jr-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    color: var(--jr-muted);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.jr-biz-name {
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--jr-text);
+    letter-spacing: -0.5px;
+    margin-bottom: 4px;
+}
+
+.jr-welcome {
+    font-size: 13px;
+    color: var(--jr-muted);
+    line-height: 1.5;
+    margin-bottom: 24px;
+}
+
+.jr-actions {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px;
+}
+
+.jr-btn {
+    padding: 12px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-decoration: none;
+    text-align: center;
+    transition: all 0.3s;
+    cursor: pointer;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    outline: none;
+}
+
+.jr-btn-solid {
+    background: #fff;
+    color: #000;
+}
+
+.jr-btn-solid:hover {
+    background: #ccc;
+    transform: translateY(-2px);
+}
+
+.jr-btn-outline {
+    background: rgba(255,255,255,0.05);
+    color: #fff;
+    border: 1px solid var(--jr-border);
+}
+
+.jr-btn-outline:hover {
+    background: rgba(255,255,255,0.1);
+}
+
+/* Close Button */
+.jr-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0.3;
+    transition: opacity 0.3s;
+}
+
+.jr-close:hover {
+    opacity: 1;
+}
+
+@media (max-width: 480px) {
+    #jr-float-container {
+        width: calc(100% - 40px);
+        bottom: 20px;
+        left: 20px;
+        right: 20px;
+    }
+}
