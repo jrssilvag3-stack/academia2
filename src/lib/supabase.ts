@@ -53,5 +53,5 @@ export const supabase = {
       getPublicUrl: () => ({ data: { publicUrl: "" } }),
     }),
   },
-} as any; // eslint-disable-line @typescript-eslint/no-explicit-any
+} as any;
 
